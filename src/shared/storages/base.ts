@@ -57,6 +57,11 @@ export function createStorage<D>(
   };
 
   const subscribe = (listener: () => void) => {
+    chrome.storage[storageType].onChanged.addListener((changes) => {
+      cache = {...cache, ...changes[key].newValue}
+      _emitChange();
+    });
+
     listeners = [...listeners, listener];
     return () => {
       listeners = listeners.filter((l) => l !== listener);
