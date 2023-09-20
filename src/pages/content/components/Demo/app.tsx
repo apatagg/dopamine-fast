@@ -6,7 +6,11 @@ export default function App() {
   const settings = useStorage(settingsStorage);
 
   useEffect(() => {
-    console.log('HAS UPDATED blurAllMedia', settings)
+    if(settings.blurAllMedia) {
+      document.body.classList.add('blur-all-media');
+    } else {
+      document.body.classList.remove('blur-all-media');
+    }
   }, [settings.blurAllMedia]);
 
   return <div className="text-lime-400">content view</div>;
