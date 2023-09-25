@@ -1,17 +1,24 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import useStorage from '../../../../shared/hooks/useStorage';
 import settingsStorage from '../../../../shared/storages/settingsStorage';
+import {
+  desaturateAllContent,
+  removeDesaturateAllContent,
+} from '../../utils/desaturateAllContent';
+import { blurAllMedia, removeBlurAllMedia } from '../../utils/blurAllMedia';
 
 export default function App() {
   const settings = useStorage(settingsStorage);
 
   useEffect(() => {
-    if(settings.blurAllMedia) {
-      document.body.classList.add('blur-all-media');
-    } else {
-      document.body.classList.remove('blur-all-media');
-    }
+    settings.desaturateAllContent
+      ? desaturateAllContent()
+      : removeDesaturateAllContent();
+  }, [settings.desaturateAllContent]);
+
+  useEffect(() => {
+    settings.blurAllMedia ? blurAllMedia() : removeBlurAllMedia();
   }, [settings.blurAllMedia]);
 
-  return <div className="text-lime-400">content view</div>;
+  return <></>;
 }

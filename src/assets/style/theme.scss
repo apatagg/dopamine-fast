@@ -5,12 +5,25 @@
 .blur-all-media {
   // Blur all images, or elements with background-image or background with url
 
-  img, [style*="background-image"], [style*="background"] {
+  img {
     filter: blur(20px) grayscale(100%) !important;
   }
 
   // Disable if it's hover
-  img:hover, [style*="background-image"], [style*="background"]:hover {
-      filter: blur(0px)!important;
+  img:hover {
+    filter: blur(0px) !important;
   }
+}
+
+#desaturate-all-content {
+  // Desaturate all content
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+
+  pointer-events: none;
+  background-color:rgb(214 214 214 / 34%);
 }

@@ -1,9 +1,11 @@
 export interface Settings {
-    blurAllMedia: boolean;
+  blurAllMedia: boolean;
+  desaturateAllContent: boolean;
 }
 
 export const DefaultSettings: Settings = {
-    blurAllMedia: false,
-}
+  blurAllMedia: false,
+  desaturateAllContent: false,
+};
 
 export type SettingsType = keyof Settings;
