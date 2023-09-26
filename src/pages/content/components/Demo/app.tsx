@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import useStorage from '../../../../shared/hooks/useStorage';
 import settingsStorage from '../../../../shared/storages/settingsStorage';
+import { sendToBackground } from '../../actions/sendToBackground';
 
 export default function App() {
   const settings = useStorage(settingsStorage);
@@ -13,5 +14,15 @@ export default function App() {
     }
   }, [settings.blurAllMedia]);
 
-  return <div className="text-lime-400">content view</div>;
+  return (
+    <>
+      <div
+        onClick={() =>
+          sendToBackground({ type: 'testToBackground', data: 'test' })
+        }
+      >
+        Click to send to back
+      </div>
+    </>
+  );
 }
